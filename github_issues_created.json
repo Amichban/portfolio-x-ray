@@ -1,0 +1,241 @@
+{
+  "created_issues": [
+    {
+      "story_id": "US-001",
+      "title": "User Registration and Account Creation",
+      "issue_number": "5",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/5",
+      "file": "01-user-management.md"
+    },
+    {
+      "story_id": "US-002",
+      "title": "User Authentication and Login",
+      "issue_number": "6",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/6",
+      "file": "01-user-management.md"
+    },
+    {
+      "story_id": "US-003",
+      "title": "Password Reset Functionality",
+      "issue_number": "7",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/7",
+      "file": "01-user-management.md"
+    },
+    {
+      "story_id": "US-004",
+      "title": "User Profile Management",
+      "issue_number": "8",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/8",
+      "file": "01-user-management.md"
+    },
+    {
+      "story_id": "US-005",
+      "title": "Account Deactivation",
+      "issue_number": "9",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/9",
+      "file": "01-user-management.md"
+    },
+    {
+      "story_id": "US-006",
+      "title": "CSV File Upload for Portfolio Data",
+      "issue_number": "10",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/10",
+      "file": "02-data-input-management.md"
+    },
+    {
+      "story_id": "US-007",
+      "title": "CSV Format Detection and Validation",
+      "issue_number": "11",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/11",
+      "file": "02-data-input-management.md"
+    },
+    {
+      "story_id": "US-008",
+      "title": "Real-time Data Validation During CSV Upload",
+      "issue_number": "12",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/12",
+      "file": "02-data-input-management.md"
+    },
+    {
+      "story_id": "US-009",
+      "title": "Manual Position Entry Form",
+      "issue_number": "13",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/13",
+      "file": "02-data-input-management.md"
+    },
+    {
+      "story_id": "US-010",
+      "title": "Edit and Delete Existing Positions",
+      "issue_number": "14",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/14",
+      "file": "02-data-input-management.md"
+    },
+    {
+      "story_id": "US-011",
+      "title": "Multiple Portfolio Management",
+      "issue_number": "15",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/15",
+      "file": "02-data-input-management.md"
+    },
+    {
+      "story_id": "US-012",
+      "title": "Bulk Position Import with Review",
+      "issue_number": "16",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/16",
+      "file": "02-data-input-management.md"
+    },
+    {
+      "story_id": "US-013",
+      "title": "Portfolio Overview Summary",
+      "issue_number": "17",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/17",
+      "file": "03-portfolio-dashboard.md"
+    },
+    {
+      "story_id": "US-014",
+      "title": "Risk Metrics Display",
+      "issue_number": "18",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/18",
+      "file": "03-portfolio-dashboard.md"
+    },
+    {
+      "story_id": "US-015",
+      "title": "Position-Level Concentration Analysis",
+      "issue_number": "19",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/19",
+      "file": "03-portfolio-dashboard.md"
+    },
+    {
+      "story_id": "US-016",
+      "title": "Sector-Level Concentration Analysis",
+      "issue_number": "20",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/20",
+      "file": "03-portfolio-dashboard.md"
+    },
+    {
+      "story_id": "US-017",
+      "title": "Historical Performance Visualization",
+      "issue_number": "21",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/21",
+      "file": "03-portfolio-dashboard.md"
+    },
+    {
+      "story_id": "US-018",
+      "title": "Dashboard Customization and Layout",
+      "issue_number": "22",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/22",
+      "file": "03-portfolio-dashboard.md"
+    },
+    {
+      "story_id": "US-019",
+      "title": "Real-time Updates and Refresh",
+      "issue_number": "23",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/23",
+      "file": "03-portfolio-dashboard.md"
+    },
+    {
+      "story_id": "US-020",
+      "title": "Portfolio Risk Metrics Engine",
+      "issue_number": "24",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/24",
+      "file": "04-risk-calculations.md"
+    },
+    {
+      "story_id": "US-021",
+      "title": "Value at Risk (VaR) Calculation",
+      "issue_number": "25",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/25",
+      "file": "04-risk-calculations.md"
+    },
+    {
+      "story_id": "US-022",
+      "title": "Portfolio Beta Calculation",
+      "issue_number": "26",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/26",
+      "file": "04-risk-calculations.md"
+    },
+    {
+      "story_id": "US-023",
+      "title": "Sharpe Ratio and Risk-Adjusted Returns",
+      "issue_number": "27",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/27",
+      "file": "04-risk-calculations.md"
+    },
+    {
+      "story_id": "US-024",
+      "title": "Maximum Drawdown Analysis",
+      "issue_number": "28",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/28",
+      "file": "04-risk-calculations.md"
+    },
+    {
+      "story_id": "US-025",
+      "title": "Correlation Analysis Between Holdings",
+      "issue_number": "29",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/29",
+      "file": "04-risk-calculations.md"
+    },
+    {
+      "story_id": "US-026",
+      "title": "Stress Testing Scenarios",
+      "issue_number": "30",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/30",
+      "file": "04-risk-calculations.md"
+    },
+    {
+      "story_id": "US-027",
+      "title": "Position Size Concentration Alerts",
+      "issue_number": "31",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/31",
+      "file": "05-concentration-analysis.md"
+    },
+    {
+      "story_id": "US-028",
+      "title": "Sector Concentration Monitoring",
+      "issue_number": "32",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/32",
+      "file": "05-concentration-analysis.md"
+    },
+    {
+      "story_id": "US-029",
+      "title": "Geographic Concentration Analysis",
+      "issue_number": "33",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/33",
+      "file": "05-concentration-analysis.md"
+    },
+    {
+      "story_id": "US-030",
+      "title": "Market Cap Concentration Analysis",
+      "issue_number": "34",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/34",
+      "file": "05-concentration-analysis.md"
+    },
+    {
+      "story_id": "US-031",
+      "title": "Style Box Analysis (Growth vs Value)",
+      "issue_number": "35",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/35",
+      "file": "05-concentration-analysis.md"
+    },
+    {
+      "story_id": "US-032",
+      "title": "Industry Concentration Deep Dive",
+      "issue_number": "36",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/36",
+      "file": "05-concentration-analysis.md"
+    },
+    {
+      "story_id": "US-033",
+      "title": "Concentration Risk Scoring and Recommendations",
+      "issue_number": "37",
+      "url": "https://github.com/Amichban/portfolio-x-ray/issues/37",
+      "file": "05-concentration-analysis.md"
+    }
+  ],
+  "failed_issues": [],
+  "summary": {
+    "total_created": 33,
+    "total_failed": 0,
+    "repo": "Amichban/portfolio-x-ray"
+  }
+}
