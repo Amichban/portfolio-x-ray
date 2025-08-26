@@ -1,0 +1,25 @@
+project:
+  type: "full-stack"
+  
+stack:
+  backend:
+    language: "python"
+    framework: "fastapi"
+    packages: ["fastapi", "sqlalchemy", "alembic", "psycopg2-binary", "redis", "celery"]
+  frontend:
+    language: "typescript"
+    framework: "nextjs"
+    packages: ["react", "tailwindcss", "axios", "@tanstack/react-query"]
+  database:
+    primary: "postgresql"
+    cache: "redis"
+    
+structure:
+  create_dirs: ["apps/api", "apps/web", "infrastructure"]
+  
+development:
+  ports:
+    api: 8000
+    web: 3000
+    db: 5432
+    redis: 6379

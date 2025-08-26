@@ -1,0 +1,150 @@
+# Architecture Detection System
+# Automatically adapts template based on project specification
+
+detection:
+  # Analyze specification for architecture patterns
+  patterns:
+    api_first:
+      keywords: [api, rest, graphql, swagger, openapi, endpoints]
+      suggests:
+        structure: "apps/api"
+        stack: ["fastapi", "express", "django"]
+        agents: ["backend", "architect", "dba"]
+        
+    data_heavy:
+      keywords: [pipeline, etl, stream, batch, processing, analytics]
+      suggests:
+        structure: "data/"
+        stack: ["pandas", "spark", "airflow", "kafka"]
+        agents: ["dba", "backend", "architect"]
+        
+    ui_focused:
+      keywords: [design, mockup, figma, component, interface, ux]
+      suggests:
+        structure: "apps/web"
+        stack: ["nextjs", "react", "vue", "tailwind"]
+        agents: ["frontend", "architect"]
+        
+    event_driven:
+      keywords: [websocket, pubsub, kafka, events, real-time, streaming]
+      suggests:
+        structure: "services/"
+        stack: ["redis", "rabbitmq", "socket.io", "kafka"]
+        agents: ["architect", "backend"]
+        
+    serverless:
+      keywords: [lambda, functions, edge, vercel, netlify, cloudflare]
+      suggests:
+        structure: "functions/"
+        stack: ["serverless", "edge-runtime", "workers"]
+        agents: ["architect", "backend"]
+        
+    mobile:
+      keywords: [ios, android, react-native, flutter, mobile]
+      suggests:
+        structure: "mobile/"
+        stack: ["react-native", "flutter", "expo"]
+        agents: ["frontend", "architect"]
+
+  # Auto-configuration based on detection
+  auto_setup:
+    structure: true      # Create appropriate directories
+    dependencies: true   # Suggest package.json/requirements.txt
+    commands: true       # Enable relevant commands
+    agents: true         # Configure agent capabilities
+    
+  # Domain-specific adaptations
+  domains:
+    finance:
+      keywords: [trading, payment, banking, transaction, portfolio, risk]
+      requirements: ["security", "audit-logging", "compliance"]
+      experts: ["quant", "payments", "compliance"]
+      
+    healthcare:
+      keywords: [patient, medical, hipaa, health, clinical, diagnosis]
+      requirements: ["privacy", "encryption", "audit"]
+      experts: ["healthcare", "privacy", "compliance"]
+      
+    ecommerce:
+      keywords: [product, cart, checkout, payment, inventory, shipping]
+      requirements: ["payment-gateway", "inventory-management"]
+      experts: ["payments", "logistics"]
+      
+    social:
+      keywords: [user, post, feed, follow, chat, messaging]
+      requirements: ["real-time", "notifications", "media-upload"]
+      experts: ["privacy", "content-moderation"]
+    
+    data_science:
+      keywords: [ml, ai, model, training, prediction, neural]
+      requirements: ["gpu-compute", "data-pipeline", "monitoring"]
+      experts: ["ml", "data-engineer"]
+    
+    blockchain:
+      keywords: [crypto, smart-contract, web3, defi, nft]
+      requirements: ["security", "gas-optimization", "audit"]
+      experts: ["blockchain", "security", "defi"]
+
+# Domain expert suggestions
+expert_detection:
+  # Automatically suggest domain experts based on keywords
+  triggers:
+    quant:
+      keywords: [trading, portfolio, risk, backtest, strategy]
+      description: "Quantitative finance and trading systems"
+    
+    payments:
+      keywords: [payment, transaction, stripe, checkout, billing]
+      description: "Payment processing and billing systems"
+    
+    privacy:
+      keywords: [gdpr, privacy, pii, consent, deletion]
+      description: "Data privacy and GDPR compliance"
+    
+    ml:
+      keywords: [machine-learning, model, training, tensorflow, pytorch]
+      description: "Machine learning and AI systems"
+    
+    healthcare:
+      keywords: [hipaa, medical, patient, clinical, ehr]
+      description: "Healthcare regulations and medical systems"
+    
+    compliance:
+      keywords: [regulatory, audit, sox, compliance, governance]
+      description: "Regulatory compliance and governance"
+    
+    blockchain:
+      keywords: [ethereum, solidity, web3, smart-contract]
+      description: "Blockchain and smart contract development"
+
+# Dynamic command enabling based on detection
+commands:
+  core:  # Always available
+    - spec-score
+    - user-story
+    - gen-tests
+    - parallel-strategy
+    - issue
+    - issues
+    - stories-to-github
+    
+  conditional:
+    - if: "has_ui"
+      enable: ["story-ui", "frontend"]
+      
+    - if: "has_api"
+      enable: ["backend", "api-test"]
+      
+    - if: "has_database"
+      enable: ["db-setup", "dba"]
+      
+    - if: "real_time"
+      enable: ["websocket-setup"]
+
+# Smart project initialization
+initialization:
+  analyze_spec: true
+  suggest_structure: true
+  create_directories: false  # User confirms first
+  generate_config: true
+  setup_git: true

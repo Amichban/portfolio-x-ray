@@ -1,0 +1,38 @@
+name: GitHub Issue Sync
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'user-stories/*.md'
+
+jobs:
+  sync-stories:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+      
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Create Issues from Stories
+        run: |
+          for story in user-stories/*.md; do
+            if [ -f "$story" ]; then
+              title=$(grep -m1 "^#" "$story" | sed 's/^#\s*//')
+              body=$(cat "$story")
+              
+              # Check if issue already exists
+              existing=$(gh issue list --search "$title" --json number --jq '.[0].number')
+              
+              if [ -z "$existing" ]; then
+                gh issue create --title "$title" --body "$body" --label "user-story"
+                echo "Created issue for: $title"
+              else
+                echo "Issue already exists for: $title (#$existing)"
+              fi
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

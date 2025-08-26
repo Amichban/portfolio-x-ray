@@ -1,0 +1,40 @@
+# Solo Software Factory - Simplified Configuration
+# Minimal config with smart defaults
+
+project:
+  name: "Solo Software Factory"
+  quality_threshold: 7.0
+  test_generation: auto
+  
+development:
+  incremental_ui: true      # Build UI in 4 steps
+  vertical_slicing: true     # Complete features end-to-end
+  parallel_work: true        # Identify parallel opportunities
+  test_first: true           # Generate tests before implementation
+  
+testing:
+  strategy: "pyramid"        # 70% unit, 20% integration, 10% E2E
+  coverage_target: 80        # Minimum coverage percentage
+  run_on_change: true        # Auto-run tests after edits
+  
+memory:
+  strategy: "adaptive"       # Smart context management
+  max_context: 100000        # Token limit
+  auto_summarize: true       # Compress old context
+  
+agents:
+  core: [pm, architect, backend, frontend, dba, qa, security]
+  domain: []                 # Populated by /spawn-expert
+  
+github:
+  sync_issues: true          # Create issues from stories
+  project_board: true        # Track progress visually
+  
+security:
+  scan_secrets: true         # Pre-commit secret scanning
+  
+# Everything else uses smart defaults:
+# - Architecture detected from spec
+# - Commands enabled based on project type
+# - Domain experts spawned as needed
+# - Structure created as needed

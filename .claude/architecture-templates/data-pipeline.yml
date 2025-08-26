@@ -1,0 +1,92 @@
+# Data Pipeline Architecture
+project:
+  name: "${PROJECT_NAME}"
+  type: "data-pipeline"
+  description: "Data processing and ETL pipeline"
+
+stack:
+  backend:
+    language: "python"
+    framework: "fastapi"  # For monitoring API
+    version: "3.11"
+    packages:
+      - fastapi==0.104.1
+      - pandas==2.1.4
+      - numpy==1.26.2
+      - sqlalchemy==2.0.23
+      - psycopg2-binary==2.9.9
+      - redis==5.0.1
+      - celery==5.3.4
+      - apache-airflow==2.8.0
+      - boto3==1.34.0  # AWS S3
+      - pyarrow==14.0.1  # Parquet files
+      - dask==2023.12.0  # Parallel processing
+      - great-expectations==0.18.0  # Data validation
+      - prefect==2.14.0  # Alternative to Airflow
+  
+  processing:
+    scheduler: "airflow"  # or "prefect"
+    compute: "local"  # or "spark", "dask"
+    
+  storage:
+    data_lake: "s3"  # or "gcs", "azure-blob", "local"
+    warehouse: "postgresql"  # or "snowflake", "bigquery"
+    
+  database:
+    primary: "postgresql"
+    version: "15"
+    cache: "redis"
+    cache_version: "7"
+    
+  infrastructure:
+    containerization: "docker"
+    orchestration: "docker-compose"
+    ci_cd: "github-actions"
+
+structure:
+  create_dirs:
+    - pipelines/dags
+    - pipelines/tasks
+    - pipelines/operators
+    - apps/api/src  # Monitoring API
+    - data/raw
+    - data/processed
+    - data/staging
+    - notebooks  # Jupyter notebooks
+    - tests
+    - infrastructure
+    - scripts
+
+  ignore_dirs:
+    - apps/web
+    - mobile
+
+development:
+  ports:
+    api: 8000  # Monitoring API
+    airflow_web: 8080
+    jupyter: 8888
+    db: 5432
+    redis: 6379
+    
+  environment:
+    - DATABASE_URL=postgresql://postgres:postgres@localhost:5432/${PROJECT_NAME}_db
+    - REDIS_URL=redis://localhost:6379/0
+    - AIRFLOW_HOME=/opt/airflow
+    - AWS_ACCESS_KEY_ID=your-key
+    - AWS_SECRET_ACCESS_KEY=your-secret
+    - S3_BUCKET=${PROJECT_NAME}-data
+
+testing:
+  pipeline:
+    framework: "pytest"
+    data_validation: "great-expectations"
+    coverage: 75
+    
+deployment:
+  strategy: "scheduled"
+  platforms:
+    - aws-batch
+    - gcp-dataflow
+    - azure-data-factory
+    - kubernetes-cronjobs

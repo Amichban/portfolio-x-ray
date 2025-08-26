@@ -1,0 +1,79 @@
+{
+  "hooks": {
+    "user_prompt_submit": {
+      "matchers": [
+        {
+          "match": ".*"
+        }
+      ],
+      "command": "bash hooks/user-prompt-validate.sh"
+    },
+    "pre_tool_use": {
+      "matchers": [
+        {
+          "match": ".*"
+        }
+      ],
+      "command": "bash hooks/pre-tool-guard.sh"
+    },
+    "post_tool_use": {
+      "matchers": [
+        {
+          "match": ".*"
+        }
+      ],
+      "command": "bash hooks/post-tool-log.sh"
+    },
+    "stop": {
+      "matchers": [
+        {
+          "match": ".*"
+        }
+      ],
+      "command": "bash hooks/session-summary.sh"
+    },
+    "subagent_stop": {
+      "matchers": [
+        {
+          "match": ".*"
+        }
+      ],
+      "command": "bash hooks/subagent-cleanup.sh"
+    }
+  },
+  "guardrails": {
+    "protected_branches": ["main", "master", "production", "release/*"],
+    "dangerous_commands": [
+      "rm -rf",
+      "sudo rm",
+      "chmod 777",
+      "git push --force",
+      "git reset --hard HEAD~",
+      "> /dev/null 2>&1"
+    ],
+    "protected_files": [
+      ".env",
+      ".env.*",
+      "secrets/*",
+      ".github/workflows/*",
+      "*.key",
+      "*.pem",
+      "*.crt"
+    ],
+    "quality_thresholds": {
+      "spec_score_minimum": 7.0,
+      "max_operations_per_session": 50,
+      "max_files_per_commit": 10
+    },
+    "backup": {
+      "enabled": true,
+      "directory": ".claude/backups",
+      "retention_days": 7
+    },
+    "logging": {
+      "enabled": true,
+      "directory": ".claude/logs",
+      "level": "info"
+    }
+  }
+}

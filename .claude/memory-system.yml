@@ -1,0 +1,68 @@
+# Memory System Configuration
+# Hierarchical memory with automatic management
+
+memory:
+  # Three-level memory hierarchy
+  levels:
+    immediate:  # Current session only
+      location: ".claude/session/"
+      ttl: "session"
+      purpose: "Active work context"
+      
+    working:    # Active project work
+      location: ".claude/working/"
+      ttl: "7 days"
+      auto_archive: true
+      purpose: "Recent decisions and patterns"
+      
+    long_term:  # Project knowledge base
+      location: ".claude/knowledge/"
+      ttl: "permanent"
+      versioned: true
+      purpose: "Architecture decisions, learned patterns"
+
+  # Core memory files
+  files:
+    decisions:
+      path: ".claude/DECISIONS.md"
+      type: "append-only"
+      index: true
+      description: "Architecture and design decisions"
+      
+    patterns:
+      path: ".claude/PATTERNS.md"
+      type: "learning"
+      auto_extract: true
+      description: "Learned patterns from codebase"
+      
+    state:
+      path: ".claude/STATE.md"
+      type: "mutable"
+      checkpoint: "daily"
+      description: "Current project state and progress"
+
+  # Automatic memory management features
+  auto_features:
+    extract_patterns: true     # Learn from code patterns
+    index_decisions: true      # Quick decision retrieval
+    summarize_old: true        # Compress old context
+    garbage_collect: true      # Remove irrelevant data
+    
+  # Pattern learning configuration
+  pattern_learning:
+    sources:
+      - "successful_implementations"
+      - "error_resolutions"
+      - "performance_optimizations"
+    threshold: 3  # Pattern recognized after 3 occurrences
+    
+  # Context summarization rules
+  summarization:
+    triggers:
+      - context_usage: 0.7  # At 70% capacity
+      - session_age: "4 hours"  # Long sessions
+      - file_count: 50  # Many files loaded
+    preserve_detail_for:
+      - "current_story"
+      - "active_errors"
+      - "recent_decisions"

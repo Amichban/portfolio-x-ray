@@ -1,0 +1,62 @@
+# Context Management Configuration
+# Optimized for efficient token usage and relevant context loading
+
+context:
+  strategy: "adaptive-window"
+  max_tokens: 100000  # Reduced for efficiency
+  
+  # Smart prioritization based on current work
+  priority_rules:
+    - current_work: "user-stories/active/*.md"
+    - recent_decisions: ".claude/DECISIONS.md"
+    - project_state: ".claude/STATE.md"
+    - relevant_code: "auto-detect from current task"
+  
+  # Automatic summarization at 70% capacity
+  summarization:
+    trigger: 0.7
+    preserve:
+      - active_story_details
+      - recent_decisions
+      - current_task_context
+    compress:
+      - historical_context
+      - completed_stories
+      - old_code_discussions
+
+  # Each task gets fresh context
+  task_isolation: true
+  carry_forward:
+    - architecture_decisions
+    - learned_patterns
+    - project_conventions
+
+# Smart file loading based on work context
+loading:
+  rules:
+    - if: "working on API"
+      load: 
+        - "apps/api/**/*.py"
+        - ".claude/DECISIONS.md#api"
+      
+    - if: "working on UI"
+      load: 
+        - "apps/web/**/*.tsx"
+        - "design-system/**"
+      
+    - if: "database work"
+      load: 
+        - "migrations/**"
+        - "models/**"
+        - "schema.sql"
+
+  # Prevent context pollution
+  exclude:
+    - node_modules
+    - __pycache__
+    - .git
+    - build/
+    - dist/
+    - "*.log"
+    - test_reports/
+    - coverage/

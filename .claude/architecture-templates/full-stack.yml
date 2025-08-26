@@ -1,0 +1,95 @@
+# Full-Stack Web Application Architecture
+project:
+  name: "${PROJECT_NAME}"
+  type: "full-stack"
+  description: "Modern web application with API and UI"
+
+stack:
+  backend:
+    language: "python"
+    framework: "fastapi"
+    version: "3.11"
+    packages:
+      - fastapi==0.104.1
+      - sqlalchemy==2.0.23
+      - alembic==1.12.1
+      - psycopg2-binary==2.9.9
+      - redis==5.0.1
+      - celery==5.3.4
+      - pydantic==2.5.0
+      - python-jose[cryptography]==3.3.0
+      - passlib[bcrypt]==1.7.4
+      - python-multipart==0.0.6
+      - python-dotenv==1.0.0
+      - uvicorn[standard]==0.24.0
+    
+  frontend:
+    language: "typescript"
+    framework: "nextjs"
+    version: "14"
+    packages:
+      - next@14
+      - react@18
+      - react-dom@18
+      - typescript@5
+      - tailwindcss@3
+      - "@tanstack/react-query@5"
+      - axios@1
+      - zod@3
+      - react-hook-form@7
+      - "@radix-ui/react-dialog"
+      - "@radix-ui/react-dropdown-menu"
+      - lucide-react
+    
+  database:
+    primary: "postgresql"
+    version: "15"
+    cache: "redis"
+    cache_version: "7"
+    
+  infrastructure:
+    containerization: "docker"
+    orchestration: "docker-compose"
+    ci_cd: "github-actions"
+
+structure:
+  create_dirs:
+    - apps/api/src
+    - apps/api/tests
+    - apps/api/migrations
+    - apps/web/src/app
+    - apps/web/src/components
+    - apps/web/src/lib
+    - infrastructure
+    - scripts
+    - docs
+
+development:
+  ports:
+    api: 8000
+    web: 3000
+    db: 5432
+    redis: 6379
+    
+  environment:
+    - DATABASE_URL=postgresql://postgres:postgres@localhost:5432/${PROJECT_NAME}_db
+    - REDIS_URL=redis://localhost:6379/0
+    - SECRET_KEY=your-secret-key-change-in-production
+    - NEXT_PUBLIC_API_URL=http://localhost:8000
+    - NODE_ENV=development
+
+testing:
+  backend:
+    framework: "pytest"
+    coverage: 80
+  frontend:
+    framework: "jest"
+    e2e: "playwright"
+    coverage: 70
+    
+deployment:
+  strategy: "blue-green"
+  platforms:
+    - railway
+    - vercel
+    - aws
